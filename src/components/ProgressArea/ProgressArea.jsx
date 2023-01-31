@@ -56,6 +56,8 @@ function ProgressArea(props, ref) {
         const duration = event.target.duration;
         const progressBarWidth = (currentTime/duration) * 100;
         progressBar.current.style.width = `${progressBarWidth}%`;
+        progressBar.current.style.backgroundImage = 'linear-gradient(to right, #fff1eb 0%, #ace0f9 100%)'
+
         setcurrentTime(getTime(currentTime))
         setduration(getTime(duration))
     },[getTime])
@@ -78,12 +80,12 @@ function ProgressArea(props, ref) {
             <div className="progress-bar" ref={progressBar}>
                 <audio 
                     autoPlay
+                    ref={audio}
                     onEnded={onEnded}
                     onPlay={onPlay}
                     onPause={onPause}
                     onTimeUpdate={onTimeUpdate}
                     src={playList[currentIndex].src}
-                    ref={audio}
                 ></audio>
             </div>
             <div className="music-timer">

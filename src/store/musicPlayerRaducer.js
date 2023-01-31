@@ -1,8 +1,8 @@
 import img1 from "../images/music-1.jpg";
-import img2 from "../images/music-2.png";
-import img3 from "../images/music-3.png";
+import img2 from "../images/music-2.jpg";
+import img3 from "../images/music-3.jpg";
 import img4 from "../images/music-4.jpg";
-import img5 from "../images/music-5.png";
+import img5 from "../images/music-5.jpg";
 import music1 from "../music/music-1.mp3";
 import music2 from "../music/music-2.mp3";
 import music3 from "../music/music-3.mp3";
@@ -11,36 +11,36 @@ import music5 from "../music/music-5.mp3";
 
 const playList = [
   {
-    name: "Relaxed Vlog",
-    artist: "Ashot-Danielyan-Composer",
+    name: "OMG",
+    artist: "NewJeans",
     img: img1,
     src: music1,
     id: 1,
   },
   {
-    name: "Whip",
-    artist: "prazkhanal",
+    name: "가끔(Sometimes)",
+    artist: "백예린",
     img: img2,
     src: music2,
     id: 2,
   },
   {
-    name: "The Podcast Intro",
-    artist: "Music Unlimited",
+    name: "Like A Star",
+    artist: "딘(DEAN)",
     img: img3,
     src: music3,
     id: 3,
   },
   {
-    name: "We wish you a Merry Christmas",
-    artist: "Grand Project",
+    name: "와르르 ♥ (WA-R-R)",
+    artist: "HANNI (하니)",
     img: img4,
     src: music4,
     id: 4,
   },
   {
-    name: "Powerful Stylish Stomp Rock (Lets Go)",
-    artist: "MarkJuly",
+    name: "Cookie",
+    artist: "meenoi (미노이)",
     img: img5,
     src: music5,
     id: 5,

@@ -15,7 +15,7 @@
         width: 75px;
         -webkit-appearance: none;
         height: 4px;
-        background-color: $green;
+        background-image: linear-gradient(to right, #fff1eb 0%, #ace0f9 100%);
         outline-color: transparent;
       }
 
@@ -27,7 +27,7 @@
         -webkit-appearance: none;
         width: 12px;
         height: 12px;
-        background-color: $green;
+        background-color: #ace0f9;
         border-radius: 12px;
         overflow: visible;
       }

@@ -10,7 +10,7 @@ function SongDetail() {
     return (
         <>
             <div className="header">
-                <span>{playing ? 'Now Playing' : 'Not Playing'}</span>
+                <span style={{fontWeight: 'bold', fontSize: '20px'}}>{playing ? 'Now Playing' : 'Not Playing'}</span>
             </div>
             <div className="img-area">
                 <img 
@@ -19,8 +19,12 @@ function SongDetail() {
                 />
             </div>
             <div className="music-info">
-                <p className="song">{playList[currentIndex].name}</p>
-                <p className="artist">{playList[currentIndex].artist}</p>
+                <p className="song"
+                    style={{fontWeight: 'bold', fontSize: '20px'}}
+                >{playList[currentIndex].name}</p>
+                <p className="artist"
+                    style={{fontSize: '16px'}}
+                >{playList[currentIndex].artist}</p>
             </div>
         </>
     );

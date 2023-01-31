@@ -46,6 +46,8 @@ const Controls = ({
 
     const onChangeVolume = useCallback((event) => {
         changeVolume(event.target.value);
+        const gradient_value = 100 / event.target.attributes.max.value;
+        event.target.style.background = 'linear-gradient(to right, #fff1eb 0%, #ace0f9 '+gradient_value * event.target.value +'%, rgb(236, 236, 236) ' +gradient_value *  event.target.value + '%, rgb(236, 236, 236) 100%)';
     },[changeVolume]);
 
     const onClickPrevious = useCallback(() => {
@@ -78,7 +80,7 @@ const Controls = ({
                 sx={{ fontSize: 30, cursor: 'pointer' }} 
                 onClick={onClickShowPlayList}
             />
-            <RepeatButton repeat={repeat} onClick={onClickRepeat}/>
+            
             <SkipPrevious 
                 sx={{ fontSize: 30, cursor: 'pointer' }} 
                 onClick={onClickPrevious}
@@ -99,6 +101,7 @@ const Controls = ({
                 sx={{ fontSize: 30, cursor: 'pointer' }}
                 onClick={onClickNext}
             />
+            <RepeatButton repeat={repeat} onClick={onClickRepeat}/>
             <div className="volume-container">
                 <VolumeUpIcon sx={{ fontSize: 20 }} />
                 <input 

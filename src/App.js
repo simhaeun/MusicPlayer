@@ -25,19 +25,21 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <SongDetail />
-        <ProgressArea ref={audioRef} />
-        <Controls 
-          setShowPlayList={setShowPlayList}
-          play={onPlay} 
-          pause={onPause} 
-          changeVolume={changeVolume} 
-          resetDuration={resetDuration} 
-        />
-        <PlayList 
-          setShowPlayList={setShowPlayList} 
-          showPlayList={showPlayList}
-        />
+        <div className='card'>
+          <SongDetail />
+          <ProgressArea ref={audioRef} />
+          <Controls 
+            setShowPlayList={setShowPlayList}
+            play={onPlay} 
+            pause={onPause} 
+            changeVolume={changeVolume} 
+            resetDuration={resetDuration} 
+          />
+          <PlayList 
+            setShowPlayList={setShowPlayList} 
+            showPlayList={showPlayList}
+          />
+  </div>
       </div>
     </div>
   );

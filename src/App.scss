@@ -1,5 +1,10 @@
 @import './variables.scss';
 
+:root {
+  --mainColor1: #f8fbff;
+  --mainColor2: #bee7ff;
+}
+
 .container {
   width: 500px;
   padding: 25px 30px;
@@ -7,5 +12,13 @@
   position: relative;
   border-radius: 15px;
   bottom: 2px solid black;
-  background: $white;
+
+}
+.card {
+  padding: 50px 20px;
+  border-radius: 20px;
+  // background: linear-gradient(to top, var(--mainColor1), var(--mainColor2));
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4), 0 4px 10px rgba(85, 85, 85, 0.3);
+  -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
 }
