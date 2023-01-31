@@ -5,15 +5,40 @@
 state를 관리하는 전용 장소(store)에서 상태 관리
 
 ## 재생 / 정지 기능
-- Reducer 구성하기
+- Reducer 구성
+```jsx
+const PLAY_MUSIC = 'musicPlayer/PLAY_MUSIC';
+const STOP_MUSIC = 'musicPlayer/STOP_MUSIC';
+
+export const playMusic = () => ({type: PLAY_MUSIC})
+export const stopMusic = () => ({type: STOP_MUSIC})
+
+export default function musicPlayerReducer(**state = initialState, action**) {
+  switch(action.type) {
+    case PLAY_MUSIC:
+      return {
+        ...state,
+        playing: true
+      }
+    case STOP_MUSIC:
+      return {
+        ...state,
+        playing: false
+      }
+    default:
+      return state
+  }
+}
+```
 - audioRef 생성
 - dispatch로 play/stop Event 받아오기
+- useSelector로 동적으로 플레이(PLAY/STOP) 상태 바꾸기
 
 <br>
 
 ## Progress bar
 - 노래의 시간 구하기
-- 원하는 지점에서 Play
+- Progress bar 원하는 지점에서 Play
 
 <br>
 
@@ -45,10 +70,25 @@ const Controls = ({changeVolume,}) => {
 
 ## 이전 곡 / 다음 곡
 - store에 NEXT, PREV action 추가
-- 버튼에 이벤트 추가
 - `shallowEqual`을 이용한 useSelector 최적화
+- 노래에 따라 이미지, 아티스트, 제목 구현하기
 - 노래가 끝나면 자동으로 다음 곡으로 넘어가기
+```jsx
+const onEnded = () => {
+  dispatch(nextMusic())
+}
 
+return (
+  <audio 
+    autoPlay
+    onEnded={onEnded}
+    onPlay={onPlay}
+    onPause={onPause}
+    onTimeUpdate={onTimeUpdate}
+    src={playList[currentIndex].src}
+    ref={audio}
+></audio>
+```
 <br>
 
 ## Play Mode
@@ -76,3 +116,30 @@ function ProgressArea(props, ref) {
 <br>
 
 ## play list 재생시간 구하기
+- 노래의 재생시간 구하기 
+```jsx
+const getDuration = (src) => {
+  return new Promise((resolve) => {
+    const audio = new Audio();
+    audio.onloadedmetadata = () => {
+      const minutes = `0${parseInt(audio.duration / 60, 10)}`
+      const seconds = `0${parseInt(audio.duration % 60)}`
+      resolve(`${minutes}:${seconds.slice(-2)}`)
+    }
+    audio.src = src
+  })
+}
+
+function PlayListItem({ item, index }) {
+  const [duration, setduration] = useState("00:00");
+
+  useEffect(()=>{
+    async function getTime(){
+      const durationTime = await getDuration(item.src)
+      setduration(durationTime)
+    }
+    getTime()
+  },[item.src]);
+};
+```
+- useCallback, memo로 감싸주며 마무리
